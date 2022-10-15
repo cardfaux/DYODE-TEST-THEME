@@ -33,7 +33,7 @@
     - vegetable:carrot
     - cloth:t-shirt
     - denim:jeans
-      - I printed these out but the values are in the valueArray.
+      - I printed these out but the values are in the variables listed below which are `{{ fruit }}, {{ vegetable }}, {{ cloth }}, {{ denim }}`.
         - `{% assign fauxArray = 'fruit:apple,vegetable:carrot,cloth:t-shirt,denim:jeans' %}`
         - `{% assign objectArray = fauxArray | split: ',' %}`
         - ` {% for obj in objectArray %} {% assign theKey = obj | split: ':' | first %} {% if theKey == "fruit" %} {% assign fruit = "apple" %} {% endif %} {% if theKey == "vegetable" %} {% assign vegetable = "carrot" %} {% endif %} {% if theKey == "cloth" %} {% assign cloth = "t-shirt" %} {% endif %} {% if theKey == "denim" %} {% assign denim = "jeans" %} {% endif %} {% endfor %}`
