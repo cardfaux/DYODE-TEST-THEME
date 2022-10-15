@@ -23,15 +23,7 @@
     - I was confused on what you wanted out of this, so I just paginated the collection by 1 product to show the pagination buttons.
       - `{% paginate collection.products by 1 %} {% for product in collection.products %} {{product.title}} {{product.featured_image}} etc...... {% endfor %} {% endpaginate %}`
 4.  Using liquid code, access the product named "Blue T-Shirt". Store the id, title, handle, price, url, and image in variables.
-
-    - ` {% assign product = all_products.blue-t-shirt %} - this gets access to that specific product assuming the handle is blue-t-shirt
-
-            on that link these are printed out at the bottom of that collection page
-
-           {% assign product_id = product.id %}
-
-      {% assign product_title = product.title %}
-      {% assign product_handle = product.handle %}
-      {% assign product_price = product.compare_at_price_max %}
-      {% assign product_url = product.url %}
-      {% assign product_image = product.featured_image %}`
+    - ` {% assign product = all_products.blue-t-shirt %}`
+    - this gets access to that specific product assuming the handle is blue-t-shirt
+    - on that link these are printed out at the bottom of that collection page
+    - `{% assign product_id = product.id %} {% assign product_title = product.title %} {% assign product_handle = product.handle %} {% assign product_price = product.compare_at_price_max %} {% assign product_url = product.url %}{% assign product_image = product.featured_image %}`
