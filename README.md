@@ -27,3 +27,18 @@
     - this gets access to that specific product assuming the handle is blue-t-shirt
     - on that link these are printed out at the bottom of that collection page
     - `{% assign product_id = product.id %} {% assign product_title = product.title %} {% assign product_handle = product.handle %} {% assign product_price = product.compare_at_price_max %} {% assign product_url = product.url %}{% assign product_image = product.featured_image %}`
+      - Those values are accessed from the product object inside the `{%- for product in collection.products -%}` loop. In liquid everything is accessed from specific objects.
+5.  Using liquid code, create a key:value array using the list below. Loop through the array. Upon key type, store the value in a variable to be used later:
+    - fruit:apple
+    - vegetable:carrot
+    - cloth:t-shirt
+    - denim:jeans
+      - I printed these out but the values are in the valueArray.
+        - `{% assign fauxArray = 'fruit:apple,vegetable:carrot,cloth:t-shirt,denim:jeans' %}`
+        - `{% assign objectArray = fauxArray | split: ',' %}`
+        - `{% assign keyArray = ''%}`
+        - ` {% assign valueArray = ''%}`
+        - ` {% for obj in objectArray %} {% assign key = obj | split: ':' | first %} {% assign value = obj | split: ':' | last %} {% assign keyArray = keyArray| append: ',' | append: key %} {% assign valueArray = valueArray| append: ',' | append: value %} {% endfor %}`
+        - `{% assign keyArray = keyArray | remove_first: ',' | split: ',' %}`
+        - ` {% assign valueArray = valueArray | remove_first: ',' | split: ',' %}`
+        - `{% for obj in objArr %} {{keyArray[forloop.index0]}} : {{valueArray[forloop.index0]}} <br/> {% endfor %}`
