@@ -16,11 +16,11 @@
     - I made a section called homepage-editable-text.liquid, There is two main parts to this file.
       - `<h1>{{ section.settings.section_text }}</h1>`
       - `“settings” : [ { "type": "text", "id": "section_text", "label": "test section text" } ]`
-      - the section.settings is getting the access to the ID in the settings object.
+      - the section.settings is getting the access to the ID in the settings for that section file.
 2.  How would you add the collection featured image as a banner on the collection liquid template?
-    - I made a new collection.dyode.json file and a new section/dyode-featured-banner.liquid file and assigned that new collection template to a collection, inside that new collection template the featured image can be accessed with `{{ collection.image | image_url }}`, you can also access the first image of the first product in that collection if a featured image isn’t provided.
+    - I made a new collection.dyode.json file and a new section/dyode-featured-banner.liquid file and assigned that new collection template to a collection, inside that new collection template the featured image can be accessed with `{{ collection.image | image_url }}`, you can also access the first image of the first product in that collection if a featured image isn’t provided. That image can be added for that collection template in the shopify admin area.
 3.  Using liquid code and HTML, create a simple pagination container, "< 1 2 ... 5 >".
-    - I was confused on what you wanted out of this, so I just paginated the collection by 1 product to show the pagination buttons.
+    - I just paginated the collection by 1 product to show the pagination buttons.
       - `{% paginate collection.products by 1 %} {% for product in collection.products %} {{product.title}} {{product.featured_image}} etc...... {% endfor %} {% endpaginate %}`
 4.  Using liquid code, access the product named "Blue T-Shirt". Store the id, title, handle, price, url, and image in variables.
     - ` {% assign product = all_products.blue-t-shirt %}`
@@ -36,9 +36,10 @@
       - I printed these out but the values are in the valueArray.
         - `{% assign fauxArray = 'fruit:apple,vegetable:carrot,cloth:t-shirt,denim:jeans' %}`
         - `{% assign objectArray = fauxArray | split: ',' %}`
-        - `{% assign keyArray = ''%}`
-        - ` {% assign valueArray = ''%}`
-        - ` {% for obj in objectArray %} {% assign key = obj | split: ':' | first %} {% assign value = obj | split: ':' | last %} {% assign keyArray = keyArray| append: ',' | append: key %} {% assign valueArray = valueArray| append: ',' | append: value %} {% endfor %}`
-        - `{% assign keyArray = keyArray | remove_first: ',' | split: ',' %}`
-        - ` {% assign valueArray = valueArray | remove_first: ',' | split: ',' %}`
-        - `{% for obj in objArr %} {{keyArray[forloop.index0]}} : {{valueArray[forloop.index0]}} <br/> {% endfor %}`
+        - ` {% for obj in objectArray %} {% assign theKey = obj | split: ':' | first %} {% if theKey == "fruit" %} {% assign fruit = "apple" %} {% endif %} {% if theKey == "vegetable" %} {% assign vegetable = "carrot" %} {% endif %} {% if theKey == "cloth" %} {% assign cloth = "t-shirt" %} {% endif %} {% if theKey == "denim" %} {% assign denim = "jeans" %} {% endif %} {% endfor %}`
+        - the values are in the variables.
+        - `{{fruit}}`
+        - `{{vegetable}}`
+        - `{{cloth}}`
+        - `{{denim}}`
+      - I made it into an array, split the array on the `,`, looped through the array split in on the `:` and took the first one, made a couple if statements and assigned values to the variables depending on what the value of `theKey` variable was.

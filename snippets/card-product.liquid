@@ -140,35 +140,32 @@
       </div>
       <!-- key:value pair array -->
       <div>
-        <!-- {% assign text = 'fruit:apple,vegetable:carrot,cloth:t-shirt,denim:jeans' %} -->
         {% assign fauxArray = 'fruit:apple,vegetable:carrot,cloth:t-shirt,denim:jeans' %}
 
-        <!-- {% assign objArr = fauxArray | split: ',' %} -->
         {% assign objectArray = fauxArray | split: ',' %}
 
-        <!-- {% assign keyArr = ''%} -->
-        {% assign keyArray = ''%}
-        {% assign valueArray = ''%}
-
-
         {% for obj in objectArray %}
-          {% assign key = obj | split: ':' | first %}
-          {% assign value = obj | split: ':' | last %}
-          {% assign keyArray = keyArray| append: ',' | append: key  %}
-          {% assign valueArray = valueArray| append: ',' | append: value  %}
-        {% endfor %}
 
-        {% assign keyArray = keyArray | remove_first: ',' | split: ',' %}
-        {% assign valueArray = valueArray | remove_first: ',' | split: ',' %}
-
-
-        {% for obj in objArr %}
-          {{keyArray[forloop.index0]}}
-          :
-          {{valueArray[forloop.index0]}}
-          <br/>
+          {% assign theKey = obj | split: ':' | first %}
+          
+          {% if theKey == "fruit" %}
+            {% assign fruit = "apple" %}
+          {% endif %}
+          {% if theKey == "vegetable" %}
+            {% assign vegetable = "carrot" %}
+          {% endif %}
+          {% if theKey == "cloth" %}
+            {% assign cloth = "t-shirt" %}
+          {% endif %}
+          {% if theKey == "denim" %}
+            {% assign denim = "jeans" %}
+          {% endif %}
         {% endfor %}
       </div>
+      <h1>{{fruit}}</h1>
+      <h1>{{vegetable}}</h1>
+      <h1>{{cloth}}</h1>
+      <h1>{{denim}}</h1>
     </div>
   </div>
   {%- else -%}
