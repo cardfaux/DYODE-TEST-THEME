@@ -19,18 +19,6 @@
     },
     "1665447941b7f3dece": {
       "type": "apps",
-      "blocks": {
-        "19d0fd22-c866-4e8f-8de8-7cbdac803c1c": {
-          "type": "shopify:\/\/apps\/warrantyupsell\/blocks\/test-block\/f85d2dab-2cd8-4263-b7dc-81fce2918dd7",
-          "settings": {
-            "heading": "Cute Puppy Gallery",
-            "description": "A simple app block that shows a grid of images that can be customized by the merchant. Each image can be selected to show a popup with the full-sized image."
-          }
-        }
-      },
-      "block_order": [
-        "19d0fd22-c866-4e8f-8de8-7cbdac803c1c"
-      ],
       "settings": {
         "include_margins": true
       }
